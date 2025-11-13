@@ -1,0 +1,87 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Classic White T-Shirt",
+            "price": 29.99,
+            "category": "men",
+            "image": "https://via.placeholder.com/300x400/ffffff/000000?text=White+T-Shirt",
+            "description": "Premium cotton white t-shirt for everyday wear",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Designer Denim Jacket",
+            "price": 89.99,
+            "category": "women",
+            "image": "https://via.placeholder.com/300x400/0000ff/ffffff?text=Denim+Jacket",
+            "description": "Trendy denim jacket with unique designs",
+            "sizes": [
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Casual Summer Dress",
+            "price": 59.99,
+            "category": "women",
+            "image": "https://via.placeholder.com/300x400/ff69b4/ffffff?text=Summer+Dress",
+            "description": "Light and comfortable summer dress",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL"
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Slim Fit Jeans",
+            "price": 49.99,
+            "category": "men",
+            "image": "https://via.placeholder.com/300x400/000080/ffffff?text=Slim+Jeans",
+            "description": "Comfortable slim fit jeans for modern style",
+            "sizes": [
+                "30",
+                "32",
+                "34",
+                "36"
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Elegant Blouse",
+            "price": 39.99,
+            "category": "women",
+            "image": "https://via.placeholder.com/300x400/ffb6c1/000000?text=Elegant+Blouse",
+            "description": "Beautiful elegant blouse for special occasions",
+            "sizes": [
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Sports Hoodie",
+            "price": 45.99,
+            "category": "unisex",
+            "image": "https://via.placeholder.com/300x400/808080/ffffff?text=Sports+Hoodie",
+            "description": "Comfortable hoodie for sports and casual wear",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL"
+            ]
+        }
+    ]
+}
