@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Belivers Fashion Brand</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff0000;
+            --secondary-color: #cc0000;
+            --dark-color: #000000;
+            --light-color: #f4f4f4;
+            --success-color: #28a745;
+            --accent-color: #ff3333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .navbar {
+            background-color: var(--dark-color) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary-color) !important;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .nav-link {
+            color: var(--primary-color) !important;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            margin: 0 5px;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        .nav-link.active {
+            color: white !important;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        .navbar-toggler {
+            border-color: var(--primary-color);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('/images/blb3.jpg') center/cover no-repeat;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            margin-top: 76px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-header .lead {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--primary-color);
+            height: 100%;
+        }
+
+        .contact-info {
+            padding: 80px 0;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 30px 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            border-color: #25D366;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            border-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        /* Form Styles */
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.1);
+        }
+
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-color);
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 0;
+            background: var(--dark-color);
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Cart Badge */
+        .cart-badge {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+
+        /* Brand Highlight */
+        .brand-highlight {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-header {
+                padding: 120px 0 80px;
+            }
+
+            .brand-logo {
+                height: 30px;
+            }
+
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .contact-card {
+                padding: 25px;
+            }
+        }
+
+        /* Success Message */
+        .alert-success {
+            border-radius: 10px;
+            border-left: 4px solid var(--success-color);
+        }
+
+        /* Loading State */
+        .btn-loading {
+            position: relative;
+            pointer-events: none;
+        }
+
+        .btn-loading .spinner-border {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .btn-loading .btn-text {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/images/blb1.jpg" alt="Belivers Fashion Brand Logo" class="brand-logo">
+                Belivers Fashion Brand
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/store">Store</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            Cart <span class="cart-badge" id="cartCount">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="fade-in-up">
+                <h1>Contact Us</h1>
+                <p class="lead">Get in Touch With Belivers Fashion Brand</p>
+                <p>We're here to help you with any questions or concerns</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">How to Reach Us</h2>
+                    <p class="lead">Choose your preferred method of contact</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Visit Our Store</h4>
+                        <p>Opposite B-Division, Police Station<br>High-Level, Makurdi</p>
+                        <p class="text-muted">Come see our latest collections in person</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h4>WhatsApp Us</h4>
+                        <p>08052443377<br>09039199011</p>
+                        <p class="text-muted">Fastest response - we're available 24/7</p>
+                        <a href="https://wa.me/2348052443377" class="btn whatsapp-btn mt-3">
+                            <i class="fab fa-whatsapp"></i> Start Chat
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email Us</h4>
+                        <p>beliversfashionbrand@gmail.com</p>
+                        <p class="text-muted">Send us detailed inquiries and feedback</p>
+                        <a href="mailto:beliversfashionbrand@gmail.com" class="btn btn-primary mt-3">
+                            <i class="fas fa-envelope"></i> Send Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-card">
+                        <div class="text-center mb-5">
+                            <h2 class="section-title">Send Us a Message</h2>
+                            <p class="text-muted">Fill out the form below and we'll get back to you via WhatsApp</p>
+                        </div>
+
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">First Name *</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName" class="form-label">Last Name *</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Subject *</label>
+                                <select class="form-select" id="subject" required>
+                                    <option value="" selected disabled>Select a subject</option>
+                                    <option value="product-inquiry">Product Inquiry</option>
+                                    <option value="order-status">Order Status</option>
+                                    <option value="size-guide">Size Guide</option>
+                                    <option value="delivery-info">Delivery Information</option>
+                                    <option value="return-exchange">Return & Exchange</option>
+                                    <option value="wholesale">Wholesale Inquiry</option>
+                                    <option value="collaboration">Collaboration</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea class="form-control" id="message" rows="5"
+                                    placeholder="Tell us how we can help you..." required></textarea>
+                            </div>
+
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="newsletter">
+                                <label class="form-check-label" for="newsletter">
+                                    Subscribe to our newsletter for updates on new arrivals and special offers
+                                </label>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn whatsapp-btn btn-lg" id="submitBtn">
+                                    <span class="btn-text">
+                                        <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                                    </span>
+                                    <div class="spinner-border spinner-border-sm d-none" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="map-container mt-5 mb-5">
+                        <!-- Simple map placeholder - you can replace with actual Google Maps embed -->
+                        <div
+                            style="width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/images/blb3.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: white;">
+                            <div class="text-center">
+                                <i class="fas fa-map-marker-alt fa-3x mb-3"></i>
+                                <h4>Our Location</h4>
+                                <p>Opposite B-Division, Police Station<br>High-Level, Makurdi</p>
+                                <a href="https://maps.google.com/?q=Opposite+B-Division,+Police+Station,+High-Level,+Makurdi"
+                                    class="btn btn-outline-light" target="_blank">
+                                    <i class="fas fa-directions"></i> Get Directions
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="contact-info bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    What are your delivery charges?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Delivery charges vary depending on your location and the logistic company's rates.
+                                    We'll provide you with exact delivery costs before you confirm your order.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    How long does delivery take?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Delivery times vary by location. Within Makurdi, delivery typically takes 1-2
+                                    business days. For other locations, please contact us for estimated delivery times.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    Do you offer size exchanges?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we offer size exchanges within 7 days of delivery, provided the item is unworn
+                                    and in original condition with tags attached.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                    What payment methods do you accept?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We currently accept bank transfers and cash on delivery. We're working on
+                                    integrating online payment options for your convenience.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Belivers Fashion Brand</h5>
+                    <p>Opposite B-Division, Police Station, High-Level, Makurdi</p>
+                    <p>Your trusted partner in fashion and style</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-light">Home</a></li>
+                        <li><a href="/about" class="text-light">About Us</a></li>
+                        <li><a href="/store" class="text-light">Store</a></li>
+                        <li><a href="/contact" class="text-light">Contact</a></li>
+                        <li><a href="/cart" class="text-light">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <div class="social-links">
+                        <a href="https://tiktok.com/@beliversfashionbrand" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://instagram.com/beliversfashionbrand" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/08052443377" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:beliversfashionbrand@gmail.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                    <p class="mt-3">
+                        <i class="fab fa-whatsapp"></i> 08052443377<br>
+                        <i class="fab fa-whatsapp"></i> 09039199011<br>
+                        <i class="fas fa-envelope"></i> beliversfashionbrand@gmail.com
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 Belivers Fashion Brand. All rights reserved | Powered by Sidasoft</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple cart functionality for demonstration
+        document.addEventListener('DOMContentLoaded', function () {
+            // Update cart count
+            updateCartCount();
+
+            // Setup form submission
+            setupContactForm();
+
+            // Add animation to elements on scroll
+            setupScrollAnimations();
+        });
+
+        function updateCartCount() {
+            const cartCount = document.getElementById('cartCount');
+            if (cartCount) {
+                const savedCart = localStorage.getItem('beliversCart');
+                if (savedCart) {
+                    const cartItems = JSON.parse(savedCart);
+                    const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+                    cartCount.textContent = totalItems;
+                } else {
+                    cartCount.textContent = '0';
+                }
+            }
+        }
+
+        function setupScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.contact-item, .contact-card').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        function setupContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const spinner = submitBtn.querySelector('.spinner-border');
+            const btnText = submitBtn.querySelector('.btn-text');
+
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Validate form
+                if (!validateForm()) {
+                    return;
+                }
+
+                // Show loading state
+                submitBtn.classList.add('btn-loading');
+                spinner.classList.remove('d-none');
+                btnText.style.opacity = '0';
+
+                // Simulate processing delay
+                setTimeout(() => {
+                    sendToWhatsApp();
+                    // Reset loading state
+                    submitBtn.classList.remove('btn-loading');
+                    spinner.classList.add('d-none');
+                    btnText.style.opacity = '1';
+                }, 1500);
+            });
+        }
+
+        function validateForm() {
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!firstName) {
+                showAlert('Please enter your first name', 'danger');
+                return false;
+            }
+
+            if (!lastName) {
+                showAlert('Please enter your last name', 'danger');
+                return false;
+            }
+
+            if (!phone) {
+                showAlert('Please enter your phone number', 'danger');
+                return false;
+            }
+
+            if (!subject) {
+                showAlert('Please select a subject', 'danger');
+                return false;
+            }
+
+            if (!message) {
+                showAlert('Please enter your message', 'danger');
+                return false;
+            }
+
+            return true;
+        }
+
+        function sendToWhatsApp() {
+            // Get form values
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value.trim();
+            const newsletter = document.getElementById('newsletter').checked;
+
+            // Format the message for WhatsApp
+            const subjectText = getSubjectText(subject);
+
+            let whatsappMessage = `Hello Belivers Fashion Brand!%0A%0A`;
+            whatsappMessage += `*New Contact Form Submission*%0A%0A`;
+            whatsappMessage += `*Name:* ${firstName} ${lastName}%0A`;
+            whatsappMessage += `*Phone:* ${phone}%0A`;
+            if (email) {
+                whatsappMessage += `*Email:* ${email}%0A`;
+            }
+            whatsappMessage += `*Subject:* ${subjectText}%0A`;
+            whatsappMessage += `*Message:*%0A${message}%0A%0A`;
+            whatsappMessage += `Newsletter Subscription: ${newsletter ? 'Yes' : 'No'}%0A%0A`;
+            whatsappMessage += `Please get back to me as soon as possible. Thank you!`;
+
+            // WhatsApp number (using the primary number)
+            const whatsappNumber = '2348052443377'; // 08052443377 in international format
+
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+            // Open WhatsApp in new tab
+            window.open(whatsappUrl, '_blank');
+
+            // Show success message
+            showAlert('Your message has been prepared for WhatsApp! Please check the new tab that opened.', 'success');
+
+            // Reset form
+            document.getElementById('contactForm').reset();
+        }
+
+        function getSubjectText(subjectValue) {
+            const subjects = {
+                'product-inquiry': 'Product Inquiry',
+                'order-status': 'Order Status',
+                'size-guide': 'Size Guide',
+                'delivery-info': 'Delivery Information',
+                'return-exchange': 'Return & Exchange',
+                'wholesale': 'Wholesale Inquiry',
+                'collaboration': 'Collaboration',
+                'other': 'Other'
+            };
+            return subjects[subjectValue] || 'General Inquiry';
+        }
+
+        function showAlert(message, type) {
+            // Remove existing alerts
+            const existingAlert = document.querySelector('.alert');
+            if (existingAlert) {
+                existingAlert.remove();
+            }
+
+            // Create alert
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+
+            // Insert alert before the form
+            const contactCard = document.querySelector('.contact-card');
+            contactCard.insertBefore(alertDiv, contactCard.firstChild);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.remove();
+                }
+            }, 5000);
+        }
+    </script>
+</body>
+
+</html>

@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #e91e63;
-            --secondary-color: #9c27b0;
-            --dark-color: #333;
+            --primary-color: #ff0000;
+            --secondary-color: #cc0000;
+            --dark-color: #000000;
             --light-color: #f4f4f4;
             --success-color: #28a745;
-            --accent-color: #ff4081;
+            --accent-color: #ff3333;
         }
 
         * {
@@ -32,29 +32,56 @@
 
         /* Header Styles */
         .navbar {
-            background-color: rgba(0, 0, 0, 0.9) !important;
+            background-color: var(--dark-color) !important;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            border-bottom: 2px solid var(--primary-color);
         }
 
         .navbar-brand {
             font-weight: bold;
             font-size: 1.5rem;
-            color: white !important;
+            color: var(--primary-color) !important;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
         }
 
         .nav-link {
-            color: rgba(255, 255, 255, 0.85) !important;
+            color: var(--primary-color) !important;
+            font-weight: 600;
             transition: color 0.3s ease;
+            margin: 0 5px;
         }
 
         .nav-link:hover {
-            color: var(--primary-color) !important;
+            color: white !important;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        .nav-link.active {
+            color: white !important;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        .navbar-toggler {
+            border-color: var(--primary-color);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
 
         .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('/images/blb3.jpg') center/cover no-repeat;
             color: white;
             padding: 180px 0 120px;
             text-align: center;
@@ -99,11 +126,13 @@
             margin-bottom: 2rem;
             border-radius: 10px;
             overflow: hidden;
+            border: 1px solid #e0e0e0;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
         }
 
         .product-image {
@@ -138,9 +167,10 @@
 
         /* Footer */
         .footer {
-            background: linear-gradient(to right, #2c3e50, #4a6491);
+            background: var(--dark-color);
             color: white;
             padding: 3rem 0 1rem;
+            border-top: 3px solid var(--primary-color);
         }
 
         .social-links a {
@@ -163,6 +193,14 @@
 
             .hero-section {
                 padding: 150px 0 100px;
+            }
+
+            .brand-logo {
+                height: 30px;
+            }
+
+            .navbar-brand {
+                font-size: 1.2rem;
             }
         }
 
@@ -203,7 +241,7 @@
 
         /* New Arrivals Section */
         .new-arrivals {
-            background: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover fixed;
+            background: url('/images/blb3.jpg') center/cover fixed;
             padding: 100px 0;
             color: white;
             text-align: center;
@@ -248,6 +286,11 @@
             background: var(--dark-color);
             border: none;
             padding: 12px 25px;
+            color: white;
+        }
+
+        .newsletter-form .btn:hover {
+            background: #333;
         }
 
         /* Testimonials */
@@ -257,6 +300,7 @@
             padding: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             margin: 15px;
+            border-top: 4px solid var(--primary-color);
         }
 
         .testimonial-img {
@@ -272,6 +316,22 @@
             color: #ffc107;
             margin-bottom: 10px;
         }
+
+        /* Brand Highlight */
+        .brand-highlight {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Cart Badge */
+        .cart-badge {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
     </style>
 </head>
 
@@ -279,7 +339,10 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="/">Belivers Fashion</a>
+            <a class="navbar-brand" href="/">
+                <img src="/images/blb1.jpg" alt="Belivers Fashion Brand Logo" class="brand-logo">
+                Belivers Fashion Brand
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -295,9 +358,12 @@
                         <a class="nav-link" href="/store">Store</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link active" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/cart">
                             <i class="fas fa-shopping-cart"></i>
-                            Cart (<span id="cartCount">0</span>)
+                            Cart <span class="cart-badge" id="cartCount">0</span>
                         </a>
                     </li>
                 </ul>
@@ -310,8 +376,8 @@
         <div class="container">
             <div class="fade-in-up">
                 <h1>Belivers Fashion Brand</h1>
-                <p class="lead">Premium Quality Clothing for the Modern Individual</p>
-                <p>Opposite B-Division, Police Station, High-Level, Makurdi</p>
+                <p class="lead">Built by Faith, Driven by Purpose</p>
+
                 <a href="/store" class="btn btn-primary btn-lg mt-3">Shop Now</a>
             </div>
         </div>
@@ -327,16 +393,15 @@
                 </div>
             </div>
             <div class="row" id="featuredProducts">
-                <!-- Featured products will be loaded here -->
                 <div class="col-md-4">
                     <div class="card product-card">
-                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
-                            class="card-img-top product-image" alt="Men's Fashion">
+                        <img src="/images/blb4.jpg" class="card-img-top product-image" alt="Men's Fashion">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Men's Collection</h5>
-                            <p class="card-text flex-grow-1">Stylish and comfortable clothing for the modern man.</p>
+                            <h5 class="card-title">T-Shirts</h5>
+                            <p class="card-text flex-grow-1">T-Shirts - Stylish and comfortable clothing for the modern
+                                man.</p>
                             <div class="mt-auto">
-                                <p class="product-price">From ₦5,999</p>
+                                <p class="product-price">From ₦40,000</p>
                                 <button class="btn btn-primary w-100">Shop Now</button>
                             </div>
                         </div>
@@ -344,13 +409,13 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card product-card">
-                        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
-                            class="card-img-top product-image" alt="Women's Fashion">
+                        <img src="/images/blb5.jpg" class="card-img-top product-image" alt="Women's Fashion">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Women's Collection</h5>
-                            <p class="card-text flex-grow-1">Elegant and trendy outfits for the contemporary woman.</p>
+                            <h5 class="card-title">Tank-Tops</h5>
+                            <p class="card-text flex-grow-1">Tank-Top - Elegant and trendy outfits for the contemporary
+                                outlook and appearance.</p>
                             <div class="mt-auto">
-                                <p class="product-price">From ₦7,999</p>
+                                <p class="product-price">From ₦35000</p>
                                 <button class="btn btn-primary w-100">Shop Now</button>
                             </div>
                         </div>
@@ -358,13 +423,13 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card product-card">
-                        <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80"
-                            class="card-img-top product-image" alt="Accessories">
+                        <img src="/images/blb6.jpg" class="card-img-top product-image" alt="Accessories">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Accessories</h5>
-                            <p class="card-text flex-grow-1">Complete your look with our premium accessories.</p>
+                            <h5 class="card-title">Sleevless</h5>
+                            <p class="card-text flex-grow-1">Sleeveless/Complete your look with our premium sleevless.
+                            </p>
                             <div class="mt-auto">
-                                <p class="product-price">From ₦2,999</p>
+                                <p class="product-price">From ₦45,000</p>
                                 <button class="btn btn-primary w-100">Shop Now</button>
                             </div>
                         </div>
@@ -380,7 +445,7 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <h2 class="section-title">New Arrivals</h2>
-                    <p class="lead mb-4">Fresh styles just added to our collection</p>
+                    <p class="lead mb-4">Tank Top/Fresh styles just added to our collection</p>
                     <a href="/store" class="btn btn-outline-light btn-lg">View All New Arrivals</a>
                 </div>
             </div>
@@ -395,8 +460,8 @@
                     <div class="feature-icon">
                         <i class="fas fa-truck"></i>
                     </div>
-                    <h4>Free Delivery</h4>
-                    <p>Free delivery within Makurdi for orders above ₦10,000</p>
+                    <h4>Delivery</h4>
+                    <p>Delivery Charges apply, depending on the location and logistic company prices</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="feature-icon">
@@ -416,66 +481,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">What Our Customers Say</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="testimonial-card text-center">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                            class="testimonial-img" alt="Customer">
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"The quality of clothing from Belivers Fashion is exceptional. I always get compliments when
-                            I wear their outfits!"</p>
-                        <h5>Sarah Johnson</h5>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card text-center">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                            class="testimonial-img" alt="Customer">
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <p>"Fast delivery and excellent customer service. The clothes fit perfectly and the fabric
-                            quality is top-notch."</p>
-                        <h5>Michael Adebayo</h5>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card text-center">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                            class="testimonial-img" alt="Customer">
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"I love the unique designs at Belivers Fashion. They always have something fresh and trendy
-                            that stands out."</p>
-                        <h5>Jennifer Okoro</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Newsletter -->
     <section class="newsletter">
@@ -514,10 +519,10 @@
                 <div class="col-md-4">
                     <h5>Connect With Us</h5>
                     <div class="social-links">
-                        <a href="https://tiktok.com/@Beliversfashionbrand" target="_blank">
+                        <a href="https://tiktok.com/@beliversfashionbrand" target="_blank">
                             <i class="fab fa-tiktok"></i>
                         </a>
-                        <a href="https://instagram.com/Beliversfashionbrand" target="_blank">
+                        <a href="https://instagram.com/beliversfashionbrand" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="https://wa.me/08052443377" target="_blank">
@@ -529,13 +534,14 @@
                     </div>
                     <p class="mt-3">
                         <i class="fab fa-whatsapp"></i> 08052443377<br>
+                        <i class="fab fa-whatsapp"></i> 09039199011<br>
                         <i class="fas fa-envelope"></i> beliversfashionbrand@gmail.com
                     </p>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-12 text-center">
-                    <p>&copy; 2024 Belivers Fashion Brand. All rights reserved.</p>
+                    <p>&copy; 2024 Belivers Fashion Brand. All rights reserved|Powered by Sidasoft</p>
                 </div>
             </div>
         </div>
@@ -588,6 +594,22 @@
                     this.reset();
                 });
             }
+
+            // Add to cart functionality for demo products
+            document.querySelectorAll('.product-card .btn-primary').forEach(button => {
+                button.addEventListener('click', function () {
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('.card-title').textContent;
+                    const productPrice = productCard.querySelector('.product-price').textContent;
+
+                    // Update cart count
+                    let currentCount = parseInt(cartCount.textContent);
+                    cartCount.textContent = currentCount + 1;
+
+                    // Show success message
+                    alert(`${productName} added to cart!`);
+                });
+            });
         });
     </script>
 </body>

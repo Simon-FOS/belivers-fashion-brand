@@ -9,12 +9,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #e91e63;
-            --secondary-color: #9c27b0;
-            --dark-color: #333;
+            --primary-color: #ff0000;
+            --secondary-color: #cc0000;
+            --dark-color: #000000;
             --light-color: #f4f4f4;
             --success-color: #28a745;
-            --accent-color: #ff4081;
+            --accent-color: #ff3333;
+            --gold-color: #ffd700;
+            --navy-color: #000080;
+            --emerald-color: #50c878;
         }
 
         * {
@@ -32,30 +35,57 @@
 
         /* Header Styles */
         .navbar {
-            background-color: rgba(0, 0, 0, 0.9) !important;
+            background-color: var(--dark-color) !important;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            border-bottom: 2px solid var(--primary-color);
         }
 
         .navbar-brand {
             font-weight: bold;
             font-size: 1.5rem;
-            color: white !important;
+            color: var(--primary-color) !important;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
         }
 
         .nav-link {
-            color: rgba(255, 255, 255, 0.85) !important;
+            color: var(--primary-color) !important;
+            font-weight: 600;
             transition: color 0.3s ease;
+            margin: 0 5px;
         }
 
         .nav-link:hover {
-            color: var(--primary-color) !important;
+            color: white !important;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        .nav-link.active {
+            color: white !important;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        .navbar-toggler {
+            border-color: var(--primary-color);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
 
         /* Page Header */
         .page-header {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+                url('/images/blb3.jpg') center/cover no-repeat;
             color: white;
             padding: 150px 0 100px;
             text-align: center;
@@ -72,6 +102,23 @@
         .page-header .lead {
             font-size: 1.5rem;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         /* About Content */
@@ -103,6 +150,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             height: 100%;
             text-align: center;
+            border-top: 4px solid var(--primary-color);
         }
 
         .mission-card:hover {
@@ -151,33 +199,84 @@
             font-size: 1.5rem;
         }
 
-        /* Team Section */
-        .team-section {
-            background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover fixed;
-            padding: 100px 0;
+        /* Editions Section */
+        .editions-section {
+            background: var(--dark-color);
             color: white;
-            position: relative;
+            padding: 80px 0;
         }
 
-        .team-section:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+        .edition-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--primary-color);
         }
 
-        .team-section .container {
-            position: relative;
-            z-index: 1;
+        .edition-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .edition-title {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Color Palette */
+        .color-palette {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .color-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: bold;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-black {
+            background-color: var(--dark-color);
+        }
+
+        .color-white {
+            background-color: white;
+            color: var(--dark-color);
+            border: 1px solid #ddd;
+        }
+
+        .color-gold {
+            background-color: var(--gold-color);
+            color: var(--dark-color);
+        }
+
+        .color-red {
+            background-color: var(--primary-color);
+        }
+
+        .color-navy {
+            background-color: var(--navy-color);
+        }
+
+        .color-emerald {
+            background-color: var(--emerald-color);
         }
 
         /* Contact Info */
         .contact-info {
             padding: 80px 0;
-            background: linear-gradient(to right, #2c3e50, #4a6491);
+            background: linear-gradient(to right, var(--dark-color), #333);
             color: white;
         }
 
@@ -194,9 +293,10 @@
 
         /* Footer */
         .footer {
-            background: linear-gradient(to right, #1a2a3a, #3a5474);
+            background: var(--dark-color);
             color: white;
             padding: 3rem 0 1rem;
+            border-top: 3px solid var(--primary-color);
         }
 
         .social-links a {
@@ -250,27 +350,20 @@
             animation: fadeInUp 0.8s ease forwards;
         }
 
-        /* Stats Section */
-        .stats-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        /* Brand Highlight */
+        .brand-highlight {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Cart Badge */
+        .cart-badge {
+            background-color: var(--primary-color);
             color: white;
-            padding: 80px 0;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            margin-left: 5px;
         }
 
         /* Responsive */
@@ -282,10 +375,45 @@
             .page-header {
                 padding: 120px 0 80px;
             }
+        }
 
-            .stat-number {
-                font-size: 2.5rem;
-            }
+        /* Quote Styles */
+        .quote-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .faith-quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .quote-author {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Message Section */
+        .message-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .message-item {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .message-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -294,7 +422,10 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="/">Belivers Fashion</a>
+            <a class="navbar-brand" href="/">
+                <img src="/images/blb1.jpg" alt="Belivers Fashion Brand Logo" class="brand-logo">
+                Belivers Fashion Brand
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -304,28 +435,42 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/about">About</a>
+                        <a class="nav-link" href="/about">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/store">Store</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link active" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/cart">
                             <i class="fas fa-shopping-cart"></i>
-                            Cart (<span id="cartCount">0</span>)
+                            Cart <span class="cart-badge" id="cartCount">0</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
             <div class="fade-in-up">
                 <h1>About Belivers Fashion Brand</h1>
-                <p class="lead">Your Trusted Fashion Partner</p>
+                <p class="lead">Confidence isn't optional — it's the foundation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="faith-quote">
+                "Dreams don't fade here; they evolve and fight back stronger."
+            </div>
+            <div class="quote-author">
+                - BELIEVERS FASHION BRAND
             </div>
         </div>
     </section>
@@ -336,50 +481,17 @@
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4">
                     <h2 class="section-title">Our Story</h2>
-                    <p>Belivers Fashion Brand was founded with a passion for bringing high-quality, affordable fashion
-                        to the people of Makurdi and beyond. We believe that everyone deserves to look and feel their
-                        best, regardless of their budget.</p>
-                    <p>Located at Opposite B-Division, Police Station, High-Level, Makurdi, we've been serving our
-                        community with premium clothing that combines style, comfort, and durability.</p>
-                    <p>Our journey began with a simple vision: to create a fashion brand that not only offers trendy
-                        clothing but also builds lasting relationships with our customers through exceptional service
-                        and quality products.</p>
+                    <p>In a world where doubt and pressure can drown out ambition, <span
+                            class="brand-highlight">BELIEVERS</span> was created to remind a generation that confidence
+                        isn't optional — it's the foundation. This brand isn't just about outfits; it's about identity,
+                        grit, and growth. It's for those who keep showing up, the resilient ones rewriting their own
+                        stories.</p>
+                    <p><span class="brand-highlight">BELIEVERS</span> is more than fashion — it's a movement. Every
+                        piece is designed to spark belief, courage, and the will to rise again and again. Because dreams
+                        don't fade here; they evolve and fight back stronger.</p>
                 </div>
                 <div class="col-md-6">
-                    <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                        class="img-fluid story-image" alt="Our Store">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-6">
-                    <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="stat-item">
-                        <div class="stat-number">5000+</div>
-                        <div class="stat-label">Happy Customers</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="stat-item">
-                        <div class="stat-number">1000+</div>
-                        <div class="stat-label">Products Sold</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Fashion Styles</div>
-                    </div>
+                    <img src="/images/blb4.jpg" class="img-fluid story-image" alt="Our Story">
                 </div>
             </div>
         </div>
@@ -395,8 +507,14 @@
                             <i class="fas fa-bullseye"></i>
                         </div>
                         <h3>Our Mission</h3>
-                        <p>To provide high-quality, fashionable clothing that empowers individuals to express their
-                            unique style while ensuring affordability and excellent customer service.</p>
+                        <p>To awaken purpose in every individual and inspire the next generation to work, win, and rise.
+                        </p>
+                        <p>We believe style can speak and ours speaks volumes:</p>
+                        <ul class="list-unstyled mt-3">
+                            <li><i class="fas fa-check-circle text-primary me-2"></i> Confidence over comparison.</li>
+                            <li><i class="fas fa-check-circle text-primary me-2"></i> Purpose over pressure.</li>
+                            <li><i class="fas fa-check-circle text-primary me-2"></i> Progress over perfection.</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
@@ -405,76 +523,213 @@
                             <i class="fas fa-eye"></i>
                         </div>
                         <h3>Our Vision</h3>
-                        <p>To become the leading fashion brand in Nigeria, known for quality, style innovation, and
-                            exceptional customer experience.</p>
+                        <p>To become the leading confidence-inspired fashion movement, known for empowering individuals
+                            to embrace their identity and rewrite their stories through style.</p>
+                        <p>We envision a world where fashion fuels personal growth, where every garment tells a story of
+                            resilience, ambition, and self-belief.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Values -->
+    <!-- Editions Section -->
+    <section class="editions-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title light">The Editions</h2>
+                    <p class="lead">Each collection carries a story — a heartbeat</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="edition-card">
+                        <h4 class="edition-title">Broken But Building</h4>
+                        <p>For those who've been tested but never tapped out. This collection represents resilience,
+                            rebuilding, and the courage to start again with unwavering determination.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="edition-card">
+                        <h4 class="edition-title">Late-Night Grind Collection</h4>
+                        <p>Inspired by the sleepless nights and silent victories. For the hustlers who know that some of
+                            the most important work happens when everyone else is sleeping.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="edition-card">
+                        <h4 class="edition-title">Legacy Season</h4>
+                        <p>For people creating something bigger than themselves. This collection is for the visionaries
+                            building lasting impact and generational influence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Section -->
+    <section class="message-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">The Message</h2>
+                    <p class="lead">Personal declarations worn by a generation unafraid to bet on themselves</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="message-item">
+                        <div class="message-text">"Built for more."</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="message-item">
+                        <div class="message-text">"Unbreakable spirit."</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="message-item">
+                        <div class="message-text">"Believers don't fold."</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="message-item">
+                        <div class="message-text">"Trust the journey."</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p>These aren't just statements — they're reminders worn by a generation unafraid to bet on
+                        themselves.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
     <section class="values-section">
         <div class="container">
             <div class="row text-center">
                 <div class="col-12 mb-5">
-                    <h2 class="section-title">Our Values</h2>
+                    <h2 class="section-title">Our Core Values</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3 col-6">
+                <div class="col-md-4">
                     <div class="value-item">
                         <div class="value-icon">
-                            <i class="fas fa-gem"></i>
+                            <i class="fas fa-user-shield"></i>
                         </div>
-                        <h5>Quality</h5>
-                        <p>We never compromise on the quality of our materials and craftsmanship.</p>
+                        <h5>Confidence</h5>
+                        <p>We believe in the power of self-assurance and the courage to stand firm in your identity and
+                            purpose.</p>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
+                <div class="col-md-4">
                     <div class="value-item">
                         <div class="value-icon">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-fist-raised"></i>
                         </div>
-                        <h5>Customer First</h5>
-                        <p>Our customers are at the heart of everything we do.</p>
+                        <h5>Resilience</h5>
+                        <p>We embrace challenges as opportunities for growth and never give up on our ambitions.</p>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
+                <div class="col-md-4">
                     <div class="value-item">
                         <div class="value-icon">
-                            <i class="fas fa-lightbulb"></i>
+                            <i class="fas fa-rocket"></i>
                         </div>
-                        <h5>Innovation</h5>
-                        <p>We continuously innovate to bring you the latest fashion trends.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h5>Integrity</h5>
-                        <p>We conduct our business with honesty and transparency.</p>
+                        <h5>Growth</h5>
+                        <p>We believe in continuous evolution, pushing boundaries, and constantly reaching for higher
+                            versions of ourselves.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="team-section">
+    <!-- Color Palette -->
+    <section class="color-palette">
         <div class="container">
             <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">The Aesthetic</h2>
+                    <p class="lead">A color palette rooted in strength and identity</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-6">
+                    <div class="color-item color-black">
+                        Deep Black + Pure White<br>Timeless, Fearless Confidence
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="color-item color-white">
+                        Pure White<br>Clean, Bold Identity
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="color-item color-gold">
+                        Royal Gold<br>Ambition, Success, Value
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="color-item color-red">
+                        Crimson Red<br>Courage, Passion
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="color-item color-navy">
+                        Midnight Navy<br>Vision, Discipline
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="color-item color-emerald">
+                        Emerald Green<br>Growth, New Beginnings
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
                 <div class="col-12 text-center">
-                    <h2 class="section-title light">Our Commitment</h2>
-                    <p class="lead mb-4">We are dedicated to providing you with the best fashion experience</p>
-                    <p>At Belivers Fashion Brand, we understand that fashion is more than just clothing - it's a form of
-                        self-expression. That's why we carefully curate our collections to ensure they reflect the
-                        latest trends while maintaining timeless elegance.</p>
-                    <p>Our team of fashion experts works tirelessly to source the finest materials and create designs
-                        that not only look good but feel comfortable and last long. We believe in sustainable fashion
-                        practices and strive to minimize our environmental impact.</p>
+                    <p>Every thread is crafted to look good and make you feel <span
+                            class="brand-highlight">unstoppable</span>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Movement -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">The Movement</h2>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <i class="fas fa-trophy fa-3x text-primary mb-3"></i>
+                    <h4>Don't chase applause</h4>
+                    <p>They chase purpose.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <i class="fas fa-hammer fa-3x text-primary mb-3"></i>
+                    <h4>Don't break under pressure</h4>
+                    <p>They build from it.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <i class="fas fa-door-open fa-3x text-primary mb-3"></i>
+                    <h4>Don't wait for doors</h4>
+                    <p>They create them.</p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p class="lead">This is <span class="brand-highlight">BELIEVERS</span> — for those who wear hope on
+                        their sleeves, walk with vision, and never quit.</p>
+                    <p>Destiny isn't an accident. It's a decision. And we choose to believe in more.</p>
                 </div>
             </div>
         </div>
@@ -486,7 +741,7 @@
             <div class="row">
                 <div class="col-12 text-center mb-5">
                     <h2 class="section-title light">Get In Touch</h2>
-                    <p class="lead">We'd love to hear from you</p>
+                    <p class="lead">Join the movement. Connect with us.</p>
                 </div>
             </div>
             <div class="row">
@@ -505,7 +760,7 @@
                             <i class="fab fa-whatsapp"></i>
                         </div>
                         <h5>WhatsApp</h5>
-                        <p>08052443377</p>
+                        <p>08052443377<br>09039199011</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -538,7 +793,7 @@
                 <div class="col-md-4">
                     <h5>Belivers Fashion Brand</h5>
                     <p>Opposite B-Division, Police Station, High-Level, Makurdi</p>
-                    <p>Your trusted partner in fashion and style</p>
+                    <p>Your trusted partner in fashion and confidence</p>
                 </div>
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
@@ -552,10 +807,10 @@
                 <div class="col-md-4">
                     <h5>Connect With Us</h5>
                     <div class="social-links">
-                        <a href="https://tiktok.com/@Beliversfashionbrand" target="_blank">
+                        <a href="https://tiktok.com/@beliversfashionbrand" target="_blank">
                             <i class="fab fa-tiktok"></i>
                         </a>
-                        <a href="https://instagram.com/Beliversfashionbrand" target="_blank">
+                        <a href="https://instagram.com/beliversfashionbrand" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="https://wa.me/08052443377" target="_blank">
@@ -567,13 +822,14 @@
                     </div>
                     <p class="mt-3">
                         <i class="fab fa-whatsapp"></i> 08052443377<br>
+                        <i class="fab fa-whatsapp"></i> 09039199011<br>
                         <i class="fas fa-envelope"></i> beliversfashionbrand@gmail.com
                     </p>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-12 text-center">
-                    <p>&copy; 2024 Belivers Fashion Brand. All rights reserved.</p>
+                    <p>&copy; 2024 Belivers Fashion Brand. All rights reserved | Powered by Sidasoft</p>
                 </div>
             </div>
         </div>
@@ -612,7 +868,7 @@
             }, observerOptions);
 
             // Observe elements for animation
-            document.querySelectorAll('.mission-card, .value-item, .stat-item, .contact-item').forEach(el => {
+            document.querySelectorAll('.mission-card, .value-item, .edition-card, .color-item, .message-item').forEach(el => {
                 observer.observe(el);
             });
         });

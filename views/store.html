@@ -7,14 +7,433 @@
     <title>Store - Belivers Fashion Brand</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="/css/style.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff0000;
+            --secondary-color: #cc0000;
+            --dark-color: #000000;
+            --light-color: #f4f4f4;
+            --success-color: #28a745;
+            --accent-color: #ff3333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .navbar {
+            background-color: var(--dark-color) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary-color) !important;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .nav-link {
+            color: var(--primary-color) !important;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            margin: 0 5px;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        .nav-link.active {
+            color: white !important;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        .navbar-toggler {
+            border-color: var(--primary-color);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('/images/blb3.jpg') center/cover no-repeat;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            margin-top: 76px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-header .lead {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Filters Section */
+        .filters-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .filter-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        /* Product Cards */
+        .product-card {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .product-image {
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .btn-outline-primary {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 50px 0;
+            background: white;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .category-image {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 50px 0;
+            background: #f8f9fa;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            color: var(--primary-color);
+        }
+
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-header {
+                padding: 120px 0 80px;
+            }
+
+            .filter-card {
+                margin-bottom: 20px;
+            }
+
+            .brand-logo {
+                height: 30px;
+            }
+
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Quick View Modal */
+        .quick-view-modal .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--primary-color);
+        }
+
+        .quick-view-img {
+            height: 400px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        /* Search and Filter Enhancements */
+        .search-box {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .filter-option {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-option:hover,
+        .filter-option.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Cart Badge */
+        .cart-badge {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+
+        /* Brand Highlight */
+        .brand-highlight {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Load More Button */
+        .load-more-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .load-more-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .load-more-btn .spinner-border {
+            width: 1rem;
+            height: 1rem;
+            display: none;
+        }
+
+        .load-more-btn.loading .btn-text {
+            opacity: 0;
+        }
+
+        .load-more-btn.loading .spinner-border {
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="/">Belivers Fashion</a>
+            <a class="navbar-brand" href="/">
+                <img src="/images/blb1.jpg" alt="Belivers Fashion Brand Logo" class="brand-logo">
+                Belivers Fashion Brand
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,12 +446,15 @@
                         <a class="nav-link" href="/about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/store">Store</a>
+                        <a class="nav-link" href="/store">Store</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/contact">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/cart">
                             <i class="fas fa-shopping-cart"></i>
-                            Cart (<span id="cartCount">0</span>)
+                            Cart <span class="cart-badge" id="cartCount">0</span>
                         </a>
                     </li>
                 </ul>
@@ -41,52 +463,128 @@
     </nav>
 
     <!-- Page Header -->
-    <section class="py-5 mt-5 bg-light">
+    <section class="page-header">
+        <div class="container">
+            <div class="fade-in-up">
+                <h1>Our Collection</h1>
+                <p class="lead">Discover the Latest Fashion Trends</p>
+                <p>Premium quality clothing for every occasion</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center">
-                    <h1>Our Collection</h1>
-                    <p class="lead">Discover the latest fashion trends</p>
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Shop by Category</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <img src="/images/blb4.jpg" class="category-image" alt="T-Shirts">
+                        <div class="category-overlay">
+                            <h4>T-Shirts</h4>
+                            <a href="#" class="btn btn-outline-light">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <img src="/images/blb5.jpg" class="category-image" alt="Tank Tops">
+                        <div class="category-overlay">
+                            <h4>Tank Tops</h4>
+                            <a href="#" class="btn btn-outline-light">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <img src="/images/blb6.jpg" class="category-image" alt="Sleeveless">
+                        <div class="category-overlay">
+                            <h4>Sleeveless</h4>
+                            <a href="#" class="btn btn-outline-light">Shop Now</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Filters -->
-    <section class="py-3 bg-white border-bottom">
+    <!-- Filters Section -->
+    <section class="filters-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="filter-section">
-                        <label for="categoryFilter" class="form-label">Filter by Category:</label>
+                <div class="col-lg-4 mb-3">
+                    <div class="filter-card">
+                        <div class="filter-label">Search Products</div>
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="searchInput"
+                                placeholder="What are you looking for?">
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <div class="filter-card">
+                        <div class="filter-label">Filter by Category</div>
                         <select class="form-select" id="categoryFilter">
                             <option value="all">All Categories</option>
-                            <option value="men">Men</option>
-                            <option value="women">Women</option>
-                            <option value="unisex">Unisex</option>
+                            <option value="tshirts">T-Shirts</option>
+                            <option value="tanktops">Tank Tops</option>
+                            <option value="sleeveless">Sleeveless</option>
+                            <option value="accessories">Accessories</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6 d-flex align-items-end">
-                    <div class="w-100">
-                        <input type="text" class="form-control" id="searchInput" placeholder="Search products...">
+                <div class="col-lg-4 mb-3">
+                    <div class="filter-card">
+                        <div class="filter-label">Sort by</div>
+                        <select class="form-select" id="sortFilter">
+                            <option value="featured">Featured</option>
+                            <option value="newest">Newest First</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name">Name: A to Z</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="filter-options">
+                        <div class="filter-option active" data-category="all">All</div>
+                        <div class="filter-option" data-category="tshirts">T-Shirts</div>
+                        <div class="filter-option" data-category="tanktops">Tank Tops</div>
+                        <div class="filter-option" data-category="sleeveless">Sleeveless</div>
+                        <div class="filter-option" data-category="accessories">Accessories</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Products -->
-    <section class="py-5">
+    <!-- Products Section -->
+    <section class="products-section">
         <div class="container">
             <div class="loading-spinner" id="loadingSpinner">
-                <div class="spinner-border text-primary" role="status">
+                <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
                 <p class="mt-2">Loading products...</p>
             </div>
             <div class="row" id="productsContainer">
-                <!-- Products will be loaded here -->
+                <!-- Initial products will be loaded here by JavaScript -->
+            </div>
+            <div class="load-more-container" id="loadMoreContainer">
+                <button class="btn btn-outline-primary btn-lg load-more-btn" id="loadMoreBtn">
+                    <span class="btn-text">Load More Products</span>
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </button>
             </div>
         </div>
     </section>
@@ -98,6 +596,7 @@
                 <div class="col-md-4">
                     <h5>Belivers Fashion Brand</h5>
                     <p>Opposite B-Division, Police Station, High-Level, Makurdi</p>
+                    <p>Your trusted partner in fashion and style</p>
                 </div>
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
@@ -111,10 +610,10 @@
                 <div class="col-md-4">
                     <h5>Connect With Us</h5>
                     <div class="social-links">
-                        <a href="https://tiktok.com/@Beliversfashionbrand" target="_blank">
+                        <a href="https://tiktok.com/@beliversfashionbrand" target="_blank">
                             <i class="fab fa-tiktok"></i>
                         </a>
-                        <a href="https://instagram.com/Beliversfashionbrand" target="_blank">
+                        <a href="https://instagram.com/beliversfashionbrand" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="https://wa.me/08052443377" target="_blank">
@@ -126,60 +625,472 @@
                     </div>
                     <p class="mt-3">
                         <i class="fab fa-whatsapp"></i> 08052443377<br>
+                        <i class="fab fa-whatsapp"></i> 09039199011<br>
                         <i class="fas fa-envelope"></i> beliversfashionbrand@gmail.com
                     </p>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-12 text-center">
-                    <p>&copy; 2024 Belivers Fashion Brand. All rights reserved.</p>
+                    <p>&copy; 2024 Belivers Fashion Brand. All rights reserved | Powered by Sidasoft</p>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Product Modal -->
+    <div class="modal fade quick-view-modal" id="productModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="/images/blb4.jpg" class="quick-view-img" alt="Product Image">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="modalProductTitle">Premium T-Shirt</h3>
+                            <p class="text-muted" id="modalProductDescription">Premium cotton T-shirt with modern fit
+                            </p>
+                            <p class="product-price fs-3" id="modalProductPrice">₦40,000</p>
+                            <p id="modalProductDetails">This comfortable and stylish T-shirt is perfect for everyday
+                                wear. Made from premium quality cotton for maximum comfort and durability. Part of our
+                                exclusive collection.</p>
+
+                            <div class="mb-3">
+                                <label class="form-label">Select Size:</label>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-secondary">S</button>
+                                    <button class="btn btn-outline-secondary active">M</button>
+                                    <button class="btn btn-outline-secondary">L</button>
+                                    <button class="btn btn-outline-secondary">XL</button>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Quantity:</label>
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-outline-secondary">-</button>
+                                    <input type="number" class="form-control mx-2 text-center" value="1" min="1"
+                                        style="width: 80px;">
+                                    <button class="btn btn-outline-secondary">+</button>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary w-100 btn-lg" id="modalAddToCart">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/main.js"></script>
     <script>
-        // Enhanced store functionality
+        // Product data
+        const allProducts = [
+            {
+                id: 1,
+                name: "Premium T-Shirt",
+                description: "Stylish and comfortable T-shirt for everyday wear",
+                fullDescription: "This comfortable and stylish T-shirt is perfect for everyday wear. Made from premium quality cotton for maximum comfort and durability. Part of our exclusive collection.",
+                price: "₦40,000",
+                image: "/images/blb4.jpg",
+                category: "tshirts",
+                sizes: ["S", "M", "L", "XL"],
+                badge: "New"
+            },
+            {
+                id: 2,
+                name: "Classic Tank Top",
+                description: "Elegant tank top perfect for warm weather occasions",
+                fullDescription: "Perfect for warm weather and casual occasions. Made from premium fabric that ensures comfort and style throughout the day.",
+                price: "₦35,000",
+                image: "/images/blb5.jpg",
+                category: "tanktops",
+                sizes: ["S", "M", "L"],
+                badge: "Bestseller"
+            },
+            {
+                id: 3,
+                name: "Sleeveless Top",
+                description: "Modern sleeveless design for a contemporary look",
+                fullDescription: "Modern sleeveless design that offers a contemporary and stylish look. Perfect for completing your fashion ensemble with confidence.",
+                price: "₦45,000",
+                image: "/images/blb6.jpg",
+                category: "sleeveless",
+                sizes: ["S", "M", "L", "XL"],
+                badge: "Trending"
+            },
+            {
+                id: 4,
+                name: "Designer T-Shirt",
+                description: "Exclusive designer T-shirt with unique patterns",
+                fullDescription: "Exclusive designer T-shirt featuring unique patterns and premium finish. Limited availability for true fashion enthusiasts.",
+                price: "₦42,000",
+                image: "/images/blb7.jpg",
+                category: "tshirts",
+                sizes: ["M", "L", "XL"],
+                badge: null
+            },
+            {
+                id: 5,
+                name: "Limited Edition Top",
+                description: "Special limited edition design for true fashion enthusiasts",
+                fullDescription: "Special limited edition design created exclusively for true fashion enthusiasts. Don't miss this unique opportunity.",
+                price: "₦48,000",
+                image: "/images/blb4.jpg",
+                category: "tshirts",
+                sizes: ["S", "M", "L"],
+                badge: "Limited"
+            },
+            {
+                id: 6,
+                name: "Casual Tank Top",
+                description: "Perfect for everyday casual wear with superior comfort",
+                fullDescription: "Perfect for everyday casual wear with superior comfort and style. Designed for those who value both fashion and comfort.",
+                price: "₦38,000",
+                image: "/images/blb5.jpg",
+                category: "tanktops",
+                sizes: ["S", "M", "L", "XL"],
+                badge: null
+            },
+            {
+                id: 7,
+                name: "Premium Sleeveless",
+                description: "High-quality sleeveless top with elegant design",
+                fullDescription: "High-quality sleeveless top featuring an elegant design that combines style and sophistication for any occasion.",
+                price: "₦46,000",
+                image: "/images/blb6.jpg",
+                category: "sleeveless",
+                sizes: ["S", "M", "L"],
+                badge: "New"
+            },
+            {
+                id: 8,
+                name: "Graphic T-Shirt",
+                description: "Bold graphic T-shirt with inspirational messages",
+                fullDescription: "Bold graphic T-shirt featuring inspirational messages that reflect the Believers brand philosophy of confidence and purpose.",
+                price: "₦41,000",
+                image: "/images/blb7.jpg",
+                category: "tshirts",
+                sizes: ["S", "M", "L", "XL"],
+                badge: "Bestseller"
+            },
+            {
+                id: 9,
+                name: "Athletic Tank Top",
+                description: "Performance tank top for active lifestyles",
+                fullDescription: "Performance tank top designed for active lifestyles, combining style with functionality for your workout sessions.",
+                price: "₦37,000",
+                image: "/images/blb4.jpg",
+                category: "tanktops",
+                sizes: ["M", "L", "XL"],
+                badge: null
+            }
+        ];
+
+        // Pagination variables
+        let currentPage = 1;
+        const productsPerPage = 6;
+        let displayedProducts = 0;
+        let filteredProducts = [...allProducts];
+
+        // DOM Elements
+        const productsContainer = document.getElementById('productsContainer');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const loadMoreContainer = document.getElementById('loadMoreContainer');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        const filterOptions = document.querySelectorAll('.filter-option');
+
+        // Initialize the store
         document.addEventListener('DOMContentLoaded', function () {
-            const loadingSpinner = document.getElementById('loadingSpinner');
-            const searchInput = document.getElementById('searchInput');
+            // Update cart count
+            updateCartCount();
 
-            // Show loading spinner
-            loadingSpinner.style.display = 'block';
+            // Load initial products
+            loadProducts();
 
-            productManager.loadProducts().then(products => {
-                loadingSpinner.style.display = 'none';
-                productManager.renderProducts(products, 'productsContainer');
-            });
+            // Set up event listeners
+            setupEventListeners();
+
+            // Add animation to elements on scroll
+            setupScrollAnimations();
+        });
+
+        function updateCartCount() {
+            const cartCount = document.getElementById('cartCount');
+            if (cartCount) {
+                const savedCart = localStorage.getItem('beliversCart');
+                if (savedCart) {
+                    const cartItems = JSON.parse(savedCart);
+                    const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+                    cartCount.textContent = totalItems;
+                } else {
+                    cartCount.textContent = '0';
+                }
+            }
+        }
+
+        function setupEventListeners() {
+            // Load More button
+            loadMoreBtn.addEventListener('click', loadMoreProducts);
 
             // Search functionality
-            if (searchInput) {
-                searchInput.addEventListener('input', utils.debounce(async function () {
-                    const searchTerm = this.value.toLowerCase();
-                    const category = document.getElementById('categoryFilter').value;
-                    const products = await productManager.loadProducts();
+            searchInput.addEventListener('input', debounce(function () {
+                filterProducts();
+            }, 300));
 
-                    let filteredProducts = products;
+            // Category filter
+            categoryFilter.addEventListener('change', function () {
+                filterProducts();
+            });
 
-                    // Apply category filter
-                    if (category !== 'all') {
-                        filteredProducts = filteredProducts.filter(p => p.category === category);
+            // Sort filter
+            sortFilter.addEventListener('change', function () {
+                sortProducts();
+            });
+
+            // Filter options
+            filterOptions.forEach(option => {
+                option.addEventListener('click', function () {
+                    filterOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    const category = this.getAttribute('data-category');
+                    categoryFilter.value = category;
+                    filterProducts();
+                });
+            });
+
+            // Modal add to cart
+            document.getElementById('modalAddToCart').addEventListener('click', function () {
+                const productName = document.getElementById('modalProductTitle').textContent;
+                addToCart(productName);
+            });
+        }
+
+        function setupScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                        observer.unobserve(entry.target);
                     }
+                });
+            }, observerOptions);
 
-                    // Apply search filter
-                    if (searchTerm) {
-                        filteredProducts = filteredProducts.filter(p =>
-                            p.name.toLowerCase().includes(searchTerm) ||
-                            p.description.toLowerCase().includes(searchTerm)
-                        );
-                    }
+            // Observe elements for animation
+            document.querySelectorAll('.product-card, .category-card, .filter-card').forEach(el => {
+                observer.observe(el);
+            });
+        }
 
-                    productManager.renderProducts(filteredProducts, 'productsContainer');
-                }, 300));
+        function loadProducts() {
+            // Reset for initial load
+            currentPage = 1;
+            displayedProducts = 0;
+            productsContainer.innerHTML = '';
+
+            // Filter and sort products
+            filterProducts();
+        }
+
+        function loadMoreProducts() {
+            // Show loading state
+            loadMoreBtn.classList.add('loading');
+
+            // Simulate API call delay
+            setTimeout(() => {
+                currentPage++;
+                displayProducts();
+                loadMoreBtn.classList.remove('loading');
+            }, 800);
+        }
+
+        function filterProducts() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const category = categoryFilter.value;
+
+            // Filter by search term and category
+            filteredProducts = allProducts.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) ||
+                    product.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = category === 'all' || product.category === category;
+                return matchesSearch && matchesCategory;
+            });
+
+            // Sort products
+            sortProducts();
+
+            // Reset pagination
+            currentPage = 1;
+            displayedProducts = 0;
+            productsContainer.innerHTML = '';
+
+            // Display products
+            displayProducts();
+        }
+
+        function sortProducts() {
+            const sortBy = sortFilter.value;
+
+            filteredProducts.sort((a, b) => {
+                switch (sortBy) {
+                    case 'price-low':
+                        return parseFloat(a.price.replace('₦', '').replace(',', '')) -
+                            parseFloat(b.price.replace('₦', '').replace(',', ''));
+                    case 'price-high':
+                        return parseFloat(b.price.replace('₦', '').replace(',', '')) -
+                            parseFloat(a.price.replace('₦', '').replace(',', ''));
+                    case 'name':
+                        return a.name.localeCompare(b.name);
+                    case 'newest':
+                        return b.id - a.id;
+                    default: // featured
+                        return (b.badge ? 1 : 0) - (a.badge ? 1 : 0);
+                }
+            });
+
+            // Reset pagination if not initial load
+            if (displayedProducts > 0) {
+                currentPage = 1;
+                displayedProducts = 0;
+                productsContainer.innerHTML = '';
+                displayProducts();
             }
-        });
+        }
+
+        function displayProducts() {
+            const startIndex = displayedProducts;
+            const endIndex = Math.min(startIndex + productsPerPage, filteredProducts.length);
+            const productsToShow = filteredProducts.slice(startIndex, endIndex);
+
+            if (productsToShow.length === 0 && displayedProducts === 0) {
+                productsContainer.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                        <h4>No products found</h4>
+                        <p>Try adjusting your search or filter criteria</p>
+                    </div>
+                `;
+                loadMoreContainer.style.display = 'none';
+                return;
+            }
+
+            productsToShow.forEach(product => {
+                const productCard = createProductCard(product);
+                productsContainer.appendChild(productCard);
+            });
+
+            displayedProducts += productsToShow.length;
+
+            // Show/hide load more button
+            if (displayedProducts >= filteredProducts.length) {
+                loadMoreContainer.style.display = 'none';
+            } else {
+                loadMoreContainer.style.display = 'block';
+            }
+
+            // Re-observe new elements for animation
+            setTimeout(() => {
+                document.querySelectorAll('.product-card').forEach(card => {
+                    if (!card.classList.contains('fade-in-up')) {
+                        const observer = new IntersectionObserver(function (entries) {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add('fade-in-up');
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, { threshold: 0.1 });
+                        observer.observe(card);
+                    }
+                });
+            }, 100);
+        }
+
+        function createProductCard(product) {
+            const col = document.createElement('div');
+            col.className = 'col-md-6 col-lg-4';
+
+            col.innerHTML = `
+                <div class="card product-card">
+                    <div class="position-relative">
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                        <img src="${product.image}" class="card-img-top product-image" alt="${product.name}">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">${product.name}</h5>
+                        <p class="card-text flex-grow-1">${product.description}</p>
+                        <div class="mt-auto">
+                            <p class="product-price">${product.price}</p>
+                            <div class="mb-2">
+                                <small class="text-muted">Sizes: ${product.sizes.join(', ')}</small>
+                            </div>
+                            <button class="btn btn-primary w-100 view-details-btn" data-product-id="${product.id}">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Add event listener to view details button
+            col.querySelector('.view-details-btn').addEventListener('click', function () {
+                openProductModal(product);
+            });
+
+            return col;
+        }
+
+        function openProductModal(product) {
+            document.getElementById('modalProductTitle').textContent = product.name;
+            document.getElementById('modalProductDescription').textContent = product.fullDescription;
+            document.getElementById('modalProductPrice').textContent = product.price;
+            document.getElementById('modalProductDetails').textContent = product.fullDescription;
+            document.querySelector('.quick-view-img').src = product.image;
+
+            const modal = new bootstrap.Modal(document.getElementById('productModal'));
+            modal.show();
+        }
+
+        function addToCart(productName) {
+            // Update cart count
+            let currentCount = parseInt(document.getElementById('cartCount').textContent);
+            document.getElementById('cartCount').textContent = currentCount + 1;
+
+            // Show success message
+            alert(`${productName} added to cart!`);
+
+            // Close modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
+            modal.hide();
+        }
+
+        // Utility function for debouncing
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
     </script>
 </body>
 
